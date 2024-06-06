@@ -1,0 +1,13 @@
+<svg width="1000" height="390" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+    <rect x="185" y="327" width="700" height="60" stroke="black" fill="#356B42" stroke-width="3"/>
+
+
+    <path d="m185 327 c 220 -50, 190 -5, 180 -80 c -15 -65, -10 -60, -180 -90 c -80 -25, -80 10, -180 -120 l 330 0 l 0 -2 l 50 0 l 0 -10 l 570 0 c -70 132, -20 132, -70 132 c -220 10, -220 25, -220 90 c 0 80, -20 65, 170 80 z" stroke="black" fill="#22B54E" stroke-width="3"/>
+
+    <path d="m185 157 c -80 -25, -80 10, -180 -120" stroke="black" fill="#356B42" stroke-width="3"/>
+    <path d="m885 157 c 50 0, 0 0, 70 -132" stroke="black" fill="#356B42" stroke-width="3"/>
+
+
+    <rect x="265" y="5" width="730" height="20" stroke="black" fill="#356B42" stroke-width="3"/>
+</svg>

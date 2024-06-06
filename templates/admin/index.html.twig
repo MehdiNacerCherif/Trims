@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace Admin{% endblock %}
+
+{% block body %}
+    <h2>Espace Admin</h2>
+
+    <div>
+    {% include "admin/recherche.html.twig" %}
+    </div>
+
+    <div>
+        <h5>Recherche : {{ recherche }}</h5>
+        <table cellspacing="0" cellpadding="0" style="width: 100%;">
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+            {% for user in resultats %}
+                {% set admin = false %}
+                {% for role in user.roles %}
+                        {% if role == "ROLE_ADMIN" %}{% set admin = true %}{% endif %}
+                {% endfor %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td style="{{ admin ? "color : red" : "" }}">{{ user.nom }}</td>
+                    <td>{{ user.email }}</td>
+                    <td><a href="{{ path('user_show', {'id': user.id}) }}">Voir</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <style>
+        table th, table td {
+            width: 24%;
+            padding: 2px 5px;
+            border-left: 1px solid #524a4a;
+            border-right: 1px solid #524a4a;
+        }
+        table th{
+            border-bottom : 1px solid #22B54E;
+        }
+    </style>
+{% endblock %}

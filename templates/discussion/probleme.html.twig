@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ typeVue }}{% endblock %}
+
+{% block body %}
+    <h3>{{ typeVue }} les plus récents :</h3>
+    <a href="{{ path('msg_new', {'type': type}) }}" style="background-color: darkslategrey;border-radius: 3px; padding: 6px;">Nouveau</a>
+    
+    <div>
+        {% for message in messages %}
+            <article class="msg msg-ppal border-top">
+                <p class="titre" style="border-radius: 3px;">
+                    <span>
+                        <a href="{{ path('user_show', {'id': message.auteur.id}) }}" class="nom">{{ message.auteur.nom }}</a>
+                        <span style="color: rgb(100, 100, 100);"> - Le {{ message.date|date("d/m/Y") }}</span>
+                    </span>
+                    <a href="{{ path('voir_msg', {'titre': message.titre , 'id': message.id}) }}">
+                        <span class="pts">
+                            {{ message.titre }}
+                        </span>
+                    </a>
+                </p>
+                <p class="categories">
+                    {% for categorie in message.categories %}
+                        <span>{{ categorie }}</span>
+                    {% endfor %}
+                </p>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+<form class="nv-msg" name="reponse" method="post">
+    <div class="form-champ" style="flex-wrap: wrap; background-color: transparent; border: none;">
+        <label for="msg">Votre message :</label>
+        <textarea name="reponse[contenu]" id="msg" rows="7" style="height: auto;" required>{{ reponse.contenu }}</textarea>
+    </div>
+    {{ form_row(form._token) }}
+    <div class="submit" style="width: 50%; margin: 0 auto;">
+        <button style="height: 5vh;">Envoyer</button>
+    </div>
+</form>

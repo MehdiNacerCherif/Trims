@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+    <div>
+        <div style="border-bottom : 1px solid #22B54E; text-align: left;">
+            <h2 style="margin: 10px 0">{{ user.nom }}{{ is_granted("ROLE_ADMIN") ? " - " ~ user.id : "" }}</h2>
+            {% if app.user and app.user.id == user.id %}
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+            {% endif %}
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <span class="pts">{{ user.slogan ? user.slogan : "Aucun Slogan" }}</span>
+            <strong style="color: red;">{{user.score}} Points</strong>
+        </div>
+    </div>
+    <br>
+
+    {# <a href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a> #}
+    
+    {% if app.user and app.user.id == user.id or is_granted("ROLE_ADMIN") %}
+    <hr>
+    <div>
+        <form action="{{ path('user_edit', {'id': user.id}) }}" class="nv-msg" name="user" method="post">
+            <div class="form-champ" style="flex-wrap: wrap; background-color: transparent; border: none;">
+                <label for="nom">Nom/Pseudo :</label>
+                <input type="text" name="user[nom]" id="nom" required value="{{ user.nom }}">
+            </div>
+            <div class="form-champ" style="flex-wrap: wrap; background-color: transparent; border: none;">
+                <label for="email">Votre Email :</label>
+                <input type="email" name="user[email]" id="email" required value="{{ user.email }}">
+            </div>
+            <div class="form-champ" style="flex-wrap: wrap; background-color: transparent; border: none;">
+                <label for="slogan">Votre Slogan :</label>
+                <input type="text" name="user[slogan]" id="slogan"  value="{{ user.slogan }}">
+            </div>
+            <div class="form-champ" style="flex-wrap: wrap; background-color: transparent; border: none;">
+                <label for="user_visible">Visibilité :</label>
+                <select id="user_visible" name="user[visible]">
+                    <option value="1"{{ user.visible ? "selected='selected'" : "" }}>Visible</option>
+                    <option value="0"{{ user.visible ? "" : "selected='selected'" }}>Invisible</option>
+                </select>
+            </div>
+            <div class="form-champ" style="flex-wrap: wrap; background-color: transparent; border: none;">
+                <label for="mdp">Votre Mot de Passe :</label>
+                <input type="password" name="user[password]" id="mdp" placeholder="laisser vide pour ne pas modifier">
+            </div>
+            <div class="form-champ" style="flex-wrap: wrap; background-color: transparent; border: none;">
+                <label for="confirm-mdp">Confirmer le Nouveau Mot de Passe :</label>
+                <input type="password" name="confirm-mdp" id="confirm-mdp" placeholder="confirmer pour modifier">
+            </div>
+
+            {% if is_granted("ROLE_ADMIN") %}
+                <legend>Droits d'Administrateur :</legend>
+                <div style="margin: 10px; border: 1px solid #9b9b9b; border-radius: 4px; background-color: #ffffff; font-size: 1.1em;">
+                    <div style="text-align: left;">
+                        <input type="checkbox" id="user_roles_0" name="user[roles][]" value="ROLE_USER" checked='checked' style="width: 10%; height: inherit;">
+                        <label class="form-check-label" for="user_roles_0">Utilisateur</label>
+                    </div>
+                    <div style="text-align: left;">
+                        {% set admin = false %}
+                        {% for role in user.roles %}
+                            {% if role == "ROLE_ADMIN" %}{% set admin = true %}{% endif %}
+                        {% endfor %}
+                        <input type="checkbox" id="user_roles_1" name="user[roles][]" value="ROLE_ADMIN" 
+                        {{ admin  ? "checked='checked'" : "" }} style="width: 10%; height: inherit;">
+                        <label class="form-check-label" for="user_roles_1">Administrateur</label>
+                    </div>
+                </div>
+                <div class="form-champ" style="flex-wrap: wrap; background-color: transparent; border: none;">
+                    <label for="pts">Points :</label>
+                    <input type="number" name="pts" id="pts"  value="{{ user.score }}" required>
+                </div>
+
+            {% endif %}
+
+            {{ form_row(form._token) }}
+            <div class="submit" style="width: 50%; margin: 0 auto;">
+                <button style="height: 5vh;">Envoyer</button>
+            </div>
+        </form>
+    </div>
+    {# <hr>
+    <div>
+        {{ include('user/_delete_form.html.twig') }}
+    </div> #}
+
+    {% endif %}
+{% endblock %}

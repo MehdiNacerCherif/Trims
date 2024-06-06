@@ -1,0 +1,35 @@
+<div class="carte">
+    <div style="border-bottom:1px solid black; text-align: left;">
+        <h4 class="pts">Inscription</h4>
+    </div>
+    <form  method="post" class="inscription" name="registration_form" action="{{ path("app_register") }}">
+        <div style="margin-top: 5px;">
+            <div class="form-champ">
+                <label for="registration_form_nom"><i class="fas fa-signature"></i></label>
+                <input type="text" id="registration_form_nom" name="registration_form[nom]" required="required" maxlength="100" placeholder="Entrer un Nom ou un Pseudo" value="{{ user.nom }}">
+            </div>
+            <div class="form-champ">
+                <label for="registration_form_email"><i class="fas fa-envelope"></i></label>
+                <input type="email" id="registration_form_email" name="registration_form[email]" required="required" maxlength="180"  placeholder="Entrer votre adresse Email" value="{{ user.email }}">
+            </div>
+            <div class="form-champ">
+                <label for="registration_form_plainPassword"><i class="fas fa-key"></i></label>
+                <input type="password" id="registration_form_plainPassword" name="registration_form[plainPassword]" required="required" placeholder="Entrer un Mot de Passe (min: 8 caractères)">
+            </div>
+            <div class="form-champ">
+                <label for="ConfirmPassword"><i class="fas fa-key"></i></label>
+                <input type="password" id="ConfirmPassword" name="ConfirmPassword" required="required" placeholder="Confirmer le mot de passe">
+            </div>
+            <div class="form-group">
+                <div class="form-check" style="margin: 0 1em;">        
+                    <input type="checkbox" id="registration_form_agreeTerms" name="registration_form[agreeTerms]" required="required" value="1" style="width: inherit;">
+                    <label for="registration_form_agreeTerms">Accepter les Termes</label>
+                </div>
+            </div>
+        </div>
+        <div class="submit">
+            <button type="submit">Inscription !</button>
+            {{ form_row(registrationForm._token) }}
+        </div>
+    </form>
+</div>

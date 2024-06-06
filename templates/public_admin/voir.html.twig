@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ message.titre }}{% endblock %}
+
+{% block body %}
+    <article class="msg msg-ppal">
+        <p class="titre">
+            <span>
+                <a href="{{ path('user_show', {'id': message.auteur.id}) }}" class="nom">{{ message.auteur.nom }}</a>
+                <span style="color: rgb(100, 100, 100);"> - Le {{ message.date|date("d/m/Y") }}</span>
+            </span>
+            <span class="pts">
+                {{ message.titre }}
+            </span>
+        </p>
+        <p class="contenu">{{ message.contenu }}</p>
+        <p class="categories">
+            {% for categorie in message.categories %}
+                <span>{{ categorie }}</span>
+            {% endfor %}
+        </p>
+    </article>
+    <div style="display: flex; justify-content: space-around;">
+        <a href="{{ path('repondre_demande', {'titre': message.titre , 'id': message.id}) }}" style="background-color: darkslategrey;border-radius: 3px; padding: 6px;">-Répondre-</a>
+        {% if app.user and ( is_granted('ROLE_ADMIN') or (message.auteur.id == app.user.id)) %}
+            <a href="{{ path('Dev_edit_msg', {'titre': message.titre , 'id': message.id}) }}" style="background-color: darkslategrey;border-radius: 3px; padding: 6px;">Modifier</a>
+        {% endif %}
+    </div>
+    
+    <div>
+        {% for reponse in reponses %}
+            <article class="msg msg-scd">
+                <p class="titre">
+                    <span style="display: inline-block; min-width: 25%;">
+                        <a href="{{ path('user_show', {'id': reponse.auteur.id}) }}" class="nom">{{ reponse.auteur.nom }}</a>
+                        <span style="color: rgb(100, 100, 100);"> - Le {{ reponse.date|date("d/m/Y") }}</span>
+                    </span>
+                </p>
+                <p class="contenu">{{ reponse.contenu }}</p>
+                {# <p class="avis">
+                    <a href="#">
+                        <span class="pts">0 </span>
+                        <i class="fas fa-thumbs-up"></i>
+                    </a>
+                </p> #}
+            </article>
+            {% if app.user and ( is_granted('ROLE_ADMIN') or (reponse.auteur.id == app.user.id)) %}
+                <a href="{{ path('edit_reponseDemande', {'id': reponse.id}) }}" style="background-color: darkslategrey;border-radius: 3px; padding: 6px;">Modifier</a>
+            {% endif %}
+        {% else %}
+            <h4>Aucune réponse à ce jour.</h4>
+        {% endfor %}
+    </div>
+{% endblock %}

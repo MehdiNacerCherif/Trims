@@ -1,0 +1,467 @@
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+// Menu
+body {
+    margin: 0;
+    height: 100vh;
+}
+nav {
+    position: fixed;
+    width: 15%;
+    height: 100%;
+    box-shadow: 3px 0px 5px gray;
+    z-index: 2;
+    background-color: #ffffff;
+}
+nav ul{
+    height: 100%;
+    padding-left:0;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+}
+ul > div {
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+}
+a {text-decoration: none;color: inherit;}
+nav a:hover {
+    background: rgba(66, 66, 66, 0.600);
+}
+nav a {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content : center;
+    align-items : center;
+    height: 10%;
+    font-size: 20px;
+}
+nav div > a {
+    height: 21%;
+}
+a > p {
+    margin-left: 10px;
+}
+a > i {
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.800);
+}
+a.actif {
+    background: rgba(66, 66, 66, 0.800);
+}
+a.actif:hover {
+    background: rgba(66, 66, 66, 0.900);
+}
+a.actif > i {
+    color: rgb(34, 181, 78);
+}
+a.poweroff > i.fas:nth-child(1) {
+    display: none;
+}
+h1 {
+    margin: 0 auto;
+    font-size: 3.1em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+h1 a {
+    text-decoration: underline;
+}
+@media (max-height:500px) {
+    ul > div {
+        height: 250px;
+    }
+    nav a {
+        height: 50px;
+    }
+}
+@media (max-width:900px) {
+    nav a > p {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+}
+@media (max-width:700px) {
+    nav a > p {
+        display: none;
+    }
+}
+// Classement
+.classement {
+    position: fixed;
+    right: 0;
+    width: 15%;
+    height: 100%;
+    box-shadow: -3px 0px 5px gray;
+    z-index: 2;
+    font-size: 1.1em;
+    background-color: #ffffff;
+}
+.classement hr {
+    margin: 0;
+}
+.classement .top .classmt {
+    text-align: center;
+    padding: 5% 0;
+}
+.classement .top p {
+    margin: 0;
+    display: inline;
+    color: black;
+}
+.classement .top {
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+}
+.classement .scroll {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-color: black transparent;
+    scrollbar-width: thin;
+}
+.classement ol {
+    padding: 0;
+    width: 70%;
+    margin: 0 auto;
+    margin-right: 0;
+}
+.classement li {
+    padding: 2px;
+}
+.classement li:hover {
+    background-color: rgba(66, 66, 66, 0.100);
+}
+.classement a {
+    display: block;
+    color: #22b54e;
+    padding-left: 2px;
+    white-space: nowrap;
+}
+.classement a:hover {
+    color: #356b42;
+}
+.classement li:nth-child(1) a {
+    color: #DAA520;
+}
+@media (max-width:800px) {
+    .classement .top p {
+        display: block;
+    }
+}
+@media (max-width:600px) {
+    .classement ol {
+        margin: 0 0 0 35%;
+    }
+    .classement .top p {
+        display: none;
+    }
+}
+@media (max-width:500px) {
+    .classement ol {
+        margin: 0 0 0 40%;
+    }
+}
+@media (max-width:400px) {
+    .classement ol {
+        margin: 0 0 0 50%;
+    }
+}
+// Contenu Général
+div.page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+div.centre {
+    width: 65%;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1.2em;
+}
+div.trims {
+    width: 70%;
+    font-size: 1.2em;
+    text-align: center;
+    position: fixed;
+    background-color: white;
+    margin: 0 15%;
+}
+div.trims hr {
+    margin-bottom: 0;
+}
+div.first {
+    padding-top: 15%;
+}
+.pts {
+    color: #008080;
+}
+.border-top {
+    border-top: 1px solid;
+}
+/* Présentation Css */
+iframe {
+    width: 65%;
+    height: 315px;
+}
+.Psst:hover em {
+    display: inline !important;
+}
+div.equipe ul{
+    padding: 0;
+}
+div.equipe li {
+    display: inline;
+    text-decoration: none;
+}
+section {
+    display: flex;
+    justify-content: center;
+}
+.centre a {
+    color: #22B54E;
+}
+.centre a:hover {
+    color: rgba(34, 181, 78, 0.750);
+}
+a.nom {
+    color: #356B42;
+}
+.cache {
+    color: black;
+    position: fixed;
+    text-align: center;
+    animation-duration: 20s;
+    animation-name: apparition;
+    font-size: 4.5em;
+    z-index: 5;
+}
+@keyframes apparition {
+    0% {
+        font-size: 3em;
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        font-size: 4.5em;
+        opacity: 1;
+    }
+}
+.reseaux {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    margin: 0 auto;      
+}
+div.reseaux p {
+    width: 25%;
+}
+div.reseaux i {
+    font-size: 2.5em;
+}
+@media (max-width:800px) {
+    .centre div.first {
+        padding-top: 20%;
+    }
+}
+@media (max-width:650px) {
+    .centre div.first {
+        padding-top: 25%;
+    }
+}
+@media (max-width:500px) {
+    .centre div.first {
+        padding-top: 40%;
+    }
+}
+/* discussion */
+a.choice-1 , .choice-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 20vh;
+    padding: 5px;
+    color: black;
+    font-size: 2.5em;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: #008080;
+    margin: 40px;
+}
+
+a.choice-2 , .choice-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 15vh;
+    padding: 5px;
+    color: black;
+    font-size: 2.5em;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: #008080;
+    margin: 40px;
+}
+
+.msg {
+    text-align: left;
+}
+.msg-ppal {
+    margin-top: 30px;
+}
+.msg-scd {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 50px;
+    font-size: 0.9em;
+}
+.msg .titre {
+    margin: 0;
+    border-bottom: 2px solid #22b54e;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.msg .titre > a{
+    padding: 0.8em 0;
+    width: 65%;
+    text-align: right;
+}
+.msg .titre > a:hover {
+    background-color: #9b9b9b;
+}
+.msg .titre span {
+    padding: 0.8em 10px;
+}
+.msg .titre span.limite {
+    max-width: 30%;
+}
+.msg .contenu {
+    margin: 0;
+    padding: 1em 10px;
+    background-color: #ececec;
+    white-space: pre;
+}
+.msg .categories {
+    margin: 0 auto;
+    text-align: right;
+    background-color: #ececec;
+    padding-bottom: 5px;
+}
+.msg .categories span {
+    margin: 0 10px;
+    color: #524a4a;
+}
+.msg .avis {
+    text-align: right;
+    font-size: 1.5em;
+    margin: 0;
+    padding-right: 10px;
+    background-color: #ececec;
+}
+.msg .avis a {
+    margin: 0 5px;
+    color: #808080;
+}
+/* Connexion / Inscription */
+.carte {
+    margin: 0 10px;
+    height: 53vh;
+}
+.carte h4 {
+    margin: 0;
+    padding: 1em 0.4em;
+    text-decoration: underline;
+    font-size: 1.2em;
+}
+form.connexion , form.inscription {
+    text-align: left;
+    height: 70%;
+    background-color: #ececec;
+    border: 1px solid #ececec;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+form .form-champ{
+    display: flex;
+    margin: 10px;
+    border: 1px solid #9b9b9b;
+    border-radius: 4px;
+    background-color: #ffffff;
+    font-size: 1.1em;
+}
+form.connexion i, form.inscription i {
+    padding: 0 0.2em;
+    color: #6d6b6b;
+}
+form.connexion input, form.inscription input {
+    border: none;
+    width: 100%;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+form .submit {
+    text-align: center;
+}
+form .submit button {
+    height: 50px;
+    width: 50%;
+    background-color: #22B54E;
+    border: 1px solid #008080;
+    border-radius: 3px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+/* nouveau message */
+form.nv-msg {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ececec;
+}
+form.nv-msg input, form.nv-msg textarea {
+    width: 100%;
+    height: 2em;
+}
+
+// Footer
+.footer {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 50px;
+    color: #ffffff;
+}
+.footer .main {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 10px;
+    background-color: #2c2f33;
+}
+.footer .copyright {
+    text-align: center;
+    background-color: #23272a;
+}
+.copyright p {
+    margin: 0;
+    padding: 10px 0;
+}
+.footer main div {
+    width: 50%;
+
+    display: flex;
+}
+.footer ul {
+    list-style: none;
+}
+.footer li {
+    padding: 3px 0;
+}
+.footer a {
+    text-decoration: underline;
+}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            vous êtes connectée en tant que <span class="pts">{{ app.user.nom }}</span>, <a href="{{ path('app_logout') }}">Déconnexion</a>
+        </div>
+    {% endif %}
+
+    <h2>Connexion / Inscription</h2>
+    <section>
+        <div style="width: 50%">
+            {% include "vue/connexion_card.html.twig" %}
+        </div>
+        <div style="width: 50%">
+            {% include "vue/inscription_card.html.twig" %}
+        </div>
+    </section>
+{% endblock %}

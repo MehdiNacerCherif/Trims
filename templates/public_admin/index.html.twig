@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Public Admin{% endblock %}
+
+{% block body %}
+    <a href="{{ path('public_administration') }}" class="choice-1">Administration</a>
+    <a href="{{ path('public_developpement') }}" class="choice-1">Développement</a>
+{% endblock %}

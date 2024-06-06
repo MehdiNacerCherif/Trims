@@ -1,0 +1,26 @@
+<div class="footer">
+    {% if adresse == "" %}
+        <div class="main">
+            <div>
+                <img src="{{ asset("images/logo.svg" ) }}" alt="logo trims" style="height: 40px; margin-top: 16px; margin-righ10px;">
+                <span>
+                    <p class="pts"><strong>Forgez vos compétences et vos savoirs !</strong></p>
+                    {# <a href="mailto:trims@gmail.com">trims@gmail.com</a> #}
+                </span>
+            </div>
+            <div>
+                <ul>
+                    <li><a href="{{ path('annexe') }}">À propos</a></li>
+                    <li><a href="{{ path('annexe') }}">Conditions d'utilisation</a></li>
+                    <li><a href="{{ path('annexe') }}">Confidentialité</a></li>
+                    <li><a href="{{ path('annexe') }}">Utilisation acceptable</a></li>
+                    <!-- <li><a href="#">Entreprises</a></li> des inscris font leur pub -->
+                    <li><a href="{{ path('annexe') }}#ml">Mentions légales</a></li>
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+    <div class="copyright">
+        <p>Copyright &copy; 2020 - {{ "now"|date("Y") }} <a href="#">Trims</a></p>
+    </div>
+</div>

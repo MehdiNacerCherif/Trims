@@ -1,0 +1,36 @@
+<nav>
+    <ul>
+        <div>
+            <a href="{{ path('duels') }}" title="Duels" class="{{ adresse == "duels" ? "actif" : "" }}">
+                <i class="fas fa-chess-knight"></i>
+                <p>Duels</p>
+            </a>
+            <a href="{{ path('accueil') }}" title="Présentation" class="{{ adresse == "" ? "actif" : "" }}">
+                <i class="fas fa-file-alt"></i>
+                <p>Présentation</p>
+            </a>
+            <a href="{{ path('discussion') }}" title="Discussions" class="{{ adresse == "discussions" ? "actif" : "" }}">
+                <i class="fas fa-comments"></i>
+                <p>Discussions</p>
+            </a>
+            <a href="{{ path('suggestion') }}" title="Suggestions" class="{{ adresse == "suggestions" ? "actif" : "" }}">
+                <i class="fas fa-lightbulb"></i>
+                <p>Suggestions</p>
+            </a>
+            <a href="{{ path('public-admin') }}" title="Administration" class="{{ adresse == "public-admin" ? "actif" : "" }}">
+                <i class="fas fa-user-tie"></i>
+                <p>Admin</p>
+            </a>
+        </div>
+        {% if app.user %}
+            <a href="{{ path('profil') }}" title="Profil" style="background-color: #008080;"
+                <p>{{ app.user.nom }}</p>
+            </a>
+        {% else %}
+            <a href="{{ path('connexion') }}" title="Connexion" class="{{ adresse == "connexion" ? "actif" : "" }}">
+                <i class="fas fa-plug"></i>
+                <p>Connexion</p>
+            </a>
+        {% endif %}
+    </ul>
+</nav>

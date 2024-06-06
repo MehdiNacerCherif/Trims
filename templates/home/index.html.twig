@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Présentation{% endblock %}
+
+{% block body %}
+    {# <iframe src="https://www.youtube.com/embed/IvVhGmWxXvg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> #}
+    <div> <!-- Présentation -->
+        <h2 id="presentation">Présentation</h2>
+        <p>
+            Trims a pour objectif de <strong>rendre chaque utilisateurs meilleurs</strong> dans le domaine qu'il souhaite.<br>
+            Pour cela, Trims regroupe les fonctionnalitées d'un forum, d'un reseau social ou encore d'un site competitif<br>
+            c'est à dire un tchat de discussion, des évenements tels que sondage / démonstration / thème et autres<br>
+            (dépendant de votre imagination).<br>
+            Chaque personnes volontaires pourront alors <strong>discuter et conseiller</strong> les autres utilisateurs sur un sujet<br>
+        </p>
+        <p>
+            Néanmaoins... le site n'est pas encore au point, il manque de développement et c'est pourquoi il n'est pas achevé. <br>
+            Il y a beaucoups d'idées à implémenter mais aussi une meilleur implication sur les réseaux notamment.
+        </p>
+    </div>
+    <div> <!-- Fonctionnement -->
+        <h2 id="Fonctionnement">Fonctionnement</h2>
+        <p> <!-- Connexion / Inscription -->
+            Commençons par le commencement, <strong><a href="{{ path('connexion') }}">l'inscription ou la connexion</a></strong>,<br>
+            ces deux actions vous seront très utile<br>
+            dès lorsque vous souhaitrez <strong>participer</strong> d'une quelquonque manière sur le site.<br>
+            C'est pour cela que nous les avons unis sur la même page,<br>
+            et que nous avons fait en sorte que cette page soit proposée sur le menu,<br>
+            afin qu'il soit le plus facilement accessible pour vous.<br>
+            (évidemment... sinon on serait des archi-débutants)<br>
+            <br>
+            Si vous ne l'avez pas encore constater,<br>
+            on ne vous demande pas beaucoups de choses (étant obligatoire),<br>
+            Alors <strong class="pts">inscrivez vous !</strong>
+        </p>
+        <p> <!-- Centre d'aides -->
+            Les choses ont été faites de façon à ce qu'elles paraissent <strong>le plus intuitives possible</strong>,<br>
+            lorsque vous devrez faire une action, si ce n'est pas tout à fait clair...<br>
+            Vous devriez pouvoir trouver des indications.<br>
+            <br>
+            Et si tel n'est pas le cas,<br>
+            Vous pouvez <strong>demander assistance</strong> aux modérateurs et administrateurs sur la page <a href="{{ path('public_administration') }}">Administration</a>.
+        </p>
+        <p><!-- Dépendance -->
+            À ce jour,<br>
+            Trims n'est pas totalement indépendant,<br>
+            pour pouvoir vous fournir tout dont ce dont vous avez besoins le plus rapidement possible,<br>
+            Nous avons décider d'attribuer <strong>certaines dépendances</strong> à Trims.<br>
+            <br>
+            Cela signifie également, que vous pouvez vous servir de celles ci,<br>
+            Notamment <a href="">Discord</a>, où vous pourrez aussi <strong>y poser vos questions</strong>.<br>
+            Notre Discord possède sensiblement la même organisation que le site.<br>
+            C'est d'ailleurs là, où se disputeront les duels (Lorsque qu'ils seront mis en place).
+        </p>
+    </div>
+    <div> <!-- Contact -->
+        <h2 id="contact">Contact</h2>
+        <p> <!-- Réseaux -->
+            Étant actuellement en <strong>TRÈS</strong> petite <a href="#equipe">équipe</a>,<br>
+            nous ne somment pas encore capable d'assurer notre présence sur tous les réseaux.<br>
+            (même si ce n'est pas le but d'être présent sur absolument tous)<br>
+            <br>
+            Néanmoins, nous comptons devenir présent sur certains, les voici :<br>
+            <div class="reseaux">
+                <p>
+                    <a href="">
+                        <i class="fab fa-discord" style="color: #7289DA"></i>
+                    </a>
+                </p>
+                <p>
+                    <a href="">
+                        <i class="fab fa-twitter" style="color: #00acee"></i>
+                    </a>
+                </p>
+                <p>
+                    <a href="">
+                        <i class="fab fa-youtube" style="color: red"></i>
+                    </a>
+                </p>
+                <p>
+                    <a href="">
+                        <i class="fab fa-linkedin" style="color: #0e76a8"></i>
+                    </a>
+                </p>
+            </div>
+        </p>
+        <p> <!-- Contact (autre) -->
+            Pour toute requête supplémentaire,<br>
+            Contactez nous {# sur notre mail : <a href="mailto:trims@gmail.com">trims@gmail.com</a> #}
+        </p>
+    </div>
+    <div> <!-- Équipe Trims -->
+        <h2 id="equipe">Équipe Trims</h2>
+        <div class="equipe">
+            <p>développement</p>
+            <ul>
+                <li>
+                    <a href="https://www.linkedin.com/in/mehdi-nacer-cherif-b010311b3" target="_blank">
+                        Mehdi
+                    </a>
+                </li>
+            </ul>
+            <p>Modération</p>
+            <ul>
+                <li>
+                    <a href="https://www.linkedin.com/in/mehdi-nacer-cherif-b010311b3" target="_blank">
+                        Mehdi
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    let height = window.innerHeight;
+    let width = window.innerWidth;
+    let centreh = height / 2 ;
+
+    let iframe = document.querySelector("iframe");
+    iframe.height = (height / 2.085714285714286) + "px";
+
+    let span = document.querySelector("div.centre span");
+    let i = document.querySelector("div.centre i");
+    let section = document.querySelector("section");
+
+    let apparitionMode = 1;
+    span.addEventListener("mouseenter", function apparition() {
+        if (apparitionMode < 3) {
+            section.innerHTML = '<i class="cache">ça doit faire mal...</i>';
+            if (apparitionMode == 2) {
+                section.innerHTML = '<i class="cache">Avec le coup de tout à l\'heure...</i>';
+            }
+            let cache = document.querySelector(".cache");
+            cache.style.top = centreh + "px";
+            apparitionMode++;
+        }
+    })
+
+    i.addEventListener("mouseenter", function apparition() {
+        if (apparitionMode < 3) {
+            section.innerHTML = '<i class="cache">ça doit faire mal...</i>';
+            if (apparitionMode == 2) {
+                section.innerHTML = '<i class="cache">Avec le coup de tout à l\'heure...</i>';
+            }
+            let cache = document.querySelector(".cache");
+            cache.style.top = centreh + "px";
+            apparitionMode++;
+        }
+    })
+
+    span.addEventListener("mouseleave", function disparition() {
+        section.innerHTML = "";
+    })
+
+    i.addEventListener("mouseleave", function disparition() {
+        section.innerHTML = "";
+    })
+</script>
+{% endblock %}

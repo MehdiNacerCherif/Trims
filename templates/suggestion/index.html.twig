@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suggestions{% endblock %}
+
+{% block body %}
+    <h3>Suggestions les plus récentes :</h3>
+    <a href="{{ path('sugg_new') }}" style="background-color: darkslategrey;border-radius: 3px; padding: 6px;">Nouveau</a>
+    
+    <div>
+        {% for message in messages %}
+            <article class="msg msg-ppal">
+                <p class="titre" style="border-radius: 3px;">
+                    <span>
+                        <a href="{{ path('user_show', {'id': message.auteur.id}) }}" class="nom">{{ message.auteur.nom }}</a>
+                        <span style="color: rgb(100, 100, 100);"> - Le {{ message.date|date("d/m/Y") }}</span>
+                    </span>
+                    <span class="pts">
+                        {{ message.titre }}
+                    </span>
+                </p>
+                <p class="categories">
+                    {% for categorie in message.categories %}
+                        <span>{{ categorie }}</span>
+                    {% endfor %}
+                </p>
+                <p class="contenu">{{ message.contenu }}</p>
+                {# <p class="avis">
+                    <a href="#">
+                        <span class="pts">0 </span>
+                        <i class="fas fa-thumbs-up"></i>
+                    </a>
+                </p> #}
+            </article>
+            {% if app.user and ( is_granted('ROLE_ADMIN') or (message.auteur.id == app.user.id)) %}
+            <a href="{{ path('edit_sugg', {'titre': message.titre , 'id': message.id}) }}" style="background-color: darkslategrey;border-radius: 3px; padding: 6px;">Modifier</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

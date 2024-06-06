@@ -1,0 +1,8 @@
+<div class="trims">
+    <h1>
+        <a href="#" title="Trims"><img src="{{ asset("images/logo.svg" ) }}" alt="logo Trims" style="height: 40px; margin-right: 5px;">Trims</a>
+        {% if is_granted("ROLE_ADMIN") %} | <a href="{{ path('admin_index') }}"><i class="fas fa-user-tie pts" aria-hidden="true" style="font-size: 0.8em;"></i></a>
+        {% endif %}
+    </h1>
+    <hr>
+</div>

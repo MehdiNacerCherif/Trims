@@ -1,0 +1,26 @@
+<div class="classement">
+    <div class="top">
+        <a href="#" class="classmt">
+            <i class="fab fa-hackerrank pts"></i>
+            <p> Classement</p>
+        </a>
+        <hr>
+        <ol>
+            {% for user in top3 %}
+                <li>
+                    <a href="{{ path('user_show', {'id': user.id}) }}">{{ user.nom }}</a>
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
+    <div class="scroll">
+        <ol>
+            {% for user in classement %}
+                <li>
+                    <a href="{{ path('user_show', {'id': user.id}) }}">{{ user.nom }}</a>
+                </li>
+            {% endfor %}
+        </ol>
+        <p style="border-top: 1px solid black; text-align: center;">fin du classement</p>
+    </div>
+</div>

@@ -2,11 +2,41 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>Trims - {% block title %}{% endblock %}</title>
+        {{ encore_entry_link_tags("app") }}
         {% block stylesheets %}{% endblock %}
+        <link rel="shortcut icon" href="{{ asset("images/logo-icon.svg" ) }}">
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% set adresse = app.request.getRequestUri() %}
+        {% set adresse = adresse|split('/') %}
+        {% set adresse = adresse[1] %}
+        <div class="page">
+            <div id="contenu">
+                {{ include("vue/menu.html.twig") }}
+                {{ include("vue/classement.html.twig") }}
+                {{ include("vue/title.html.twig") }}
+
+                <div class="centre">
+                    <div class="first">
+                        {% block body %}
+                        <p>Trims</p>
+                        {% endblock %}
+                    </div>
+
+                    <section></section>
+                </div>
+            </div>
+
+            {{ include("vue/footer.html.twig") }}
+        </div>
+
+        <script>
+            let hauteur = window.innerHeight;
+            let scrol = document.querySelector(".scroll");
+
+            scrol.style.height = ((hauteur - document.querySelector(".top").offsetHeight) / hauteur) *100 + "%";
+        </script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

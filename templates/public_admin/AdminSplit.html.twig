@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    {% set size = 'choice-1' %}
+    {% if app.user and is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('AllList') }}" class="choice-2"><p>- <i class="fas fa-file-alt"></i> Toutes les demandes -</p></a>
+        {% set size = 'choice-2' %}
+    {% endif %}
+    <a href="{{ path('Dev', {'type': 'Admin' }) }}" class="{{ size }}"><span><i class="fas fa-plus"></i> Nouvelle demande</span></a>
+    <a href="{{ path('Admin') }}" class="{{ size }}">Mes demandes</a>
+{% endblock %}

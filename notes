@@ -1,0 +1,177 @@
+Moi du futur qui vient du passé (un truc compliqué mais c'est pas grave)
+admin01@trims.fr
+Adm47ql3_2021
+
+
+sharemycode : dorancosalle11
+
+Exo des lien connexion sur base.html :
+{% if app.user %}
+ou
+if is_granted("IS_AUTHENTICATED_FULLY")
+
+/**
+ * @Route("/admin/membre")
+ */
+class MembreController extends AbstractController{...}
+
+requirements={"id"="\d+"}
+
+composer require form validator
+php bin/console make:crud
+
+
+fichier webpackconfig.js décommenter ligne 57 et 67
+
+dossier assets>js>app.js
+    9   import '../css/app.scss';
+    ligne 10 ecrire  const $ = require('jquery');
+    11  require('bootstrap');
+dossier assets>css>app.css renommer en .scss
+    dedans : 
+    @import "~fort" blabla
+
+yarn encore dev
+    yarn upgrade sass-loader@^8.0.0
+_________________________________________________________________________________________________________________________________________________________
+Le git (vendredi) :
+# URL GitHub du projet Boutique
+https://github.com/Gerard-Menfin/boutique_doranco.git
+
+_________________________________________________________________________________________________________________________________________________________
+Les commandes git (jeudi) :         https://github.com/Gerard-Menfin/boutique_doranco.git
+
+git init        #création du projet git
+git remote add origin https://....    #ajouter les informations du projet distant
+git add -A      #ajouter tous les fichiers de mon projet dans la liste d'attente des fichiers à commit
+git commit -m "Premier commit"   #je commit (j'enregistre) les fichiers en attente
+git push -u origin master       #je mets à jour le projet distant (sur mon compte)
+
+# pour modifier les informations concernant la connexion au projet, supprimer "remote"
+git remote remove origin
+
+### Récupérer un projet sur git
+mkdir dossier (dans le dossier dans lequel vous voulez récupérer le projet git)
+cd dossier      
+git init
+git remote add origin https://....
+créer le fichier .env.local
+composer install  (si composer est installé sur votre machine)
+yarn install      (si yarn   est installé sur votre machine)
+php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate (ou doctrine:schema:create)
+
+# php bin/console doctrine:fixtures:load
+
+_________________________________________________________________________________________________________________________________________________________
+ShareMyCode :
+
+https://drive.google.com/drive/folders/1ySirm25KSu0vtmJXZx2lzO44Hu1rLHKm?usp=sharing
+
+#
+composer create-project symfony/skeleton:"4.4.*" boutique
+composer create-project symfony/skeleton boutique "^4.4"
+
+# Se placer dans le dossier créé
+cd boutique
+
+# Lancer le serveur
+symfony serve -d
+php -S 127.0.0.1:8000 -t public
+
+# Arrêter le serveur
+symfony server:stop
+
+ #Installer le composant Doctrine
+ composer require orm
+ 
+ # fichier .env
+ 	Il faut modifier DATABASE_URL
+ 
+MAC : DATABASE_URL=mysql://root:root@127.0.0.1:8889/boutiquedb?serverVersion=5.7
+PC :  DATABASE_URL=mysql://root:@127.0.0.1:3306/boutiquedb?serverVersion=5.7
+
+
+#fichier config/packages/doctrine.yaml
+    dbal:
+        driver: pdo_mysql
+        server_version: 5.7
+        charset: utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
+
+# Création de la bdd
+php bin/console doctrine:database:create
+
+# Installation du composant Maker
+composer require maker --dev
+
+# Créer une entité 
+php bin/console make:entity
+
+#Créer un fichier de migration
+php bin/console make:migration
+
+# fix erreur lors des migrations
+fichier : vendor\doctrine\migrations\lib\Doctrine\Migrations\Metadata\Storage\TableMetadataStorage.php
+Mettre en commentaires les lignes 193, 194 et 195
+
+# Installation du composant TWIG
+composer require twig
+
+# Installation du composant ANNOTATIONS
+composer require annotations
+
+# Installation du composant WEBPACK ENCORE
+composer require encore
+
+# Installation de YARN
+https://classic.yarnpkg.com/fr/docs/install
+	Mac : 
+    		npm install -g yarn
+
+# Dans le dossier du projet, lancer
+yarn install
+
+#Pour pouvoir compiler du SASS 
+yarn add sass-loader@^7.0.1 node-sass --dev
+
+
+# Pour pouvoir utiliser FontAwesome
+yarn add @fortawesome/fontawesome-free
+
+
+# jQuery - Popper.js
+yarn add jquery popper.js
+
+# Bootstrap
+yarn add bootstrap
+
+
+# Utilisation de FontAwesome
+Au début du fichier assets/css/app.scss, taper :
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+#Utilisation de Bootstrap
+Au début du fichier assets/css/app.scss, taper :
+@import "~bootstrap/scss/bootstrap";
+
+
+# Fichier assets/js/app.js
+import '../css/app.scss';
+const $ = require('jquery');
+require('bootstrap');
+
+# Fichier webpack.config.js
+Décommenter les lignes 57 et 67:
+	.enableSassLoader() 
+    .autoProvidejQuery()
+
+# Mettre à jour une dépendance avec yarn
+yarn upgrade xxx@^x.x
+	ex: yarn upgrade sass-loader@^8.0.0
+   
+# Pour générer les fichiers front (js, css)
+yarn encore dev
+	#si vous devez lancer cette commande sur un serveur de production : yarn encore prod

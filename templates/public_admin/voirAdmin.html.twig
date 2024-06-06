@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Développement{% endblock %}
+
+{% block body %}
+    <article class="msg msg-ppal">
+        <p class="titre">
+            <span>
+                <a href="{{ path('user_show', {'id': 1}) }}" class="nom">Mehdi</a>
+                <span style="color: rgb(100, 100, 100);"> - Le 01/08/20</span>
+            </span>
+            <span class="pts">
+                Bienvenue
+            </span>
+        </p>
+        <p class="contenu">Bonjour, <br>Bienvenue sur la page consacrée au actualités du développement du site <br>Vous y trouverez les ajouts de nouvelles fonctionnalitées ou leurs état <br><br>(par exemple : en reflexion ; en design ; en developpement ; etc...)</p>
+        <p class="categories">
+            <span>Développement</span>
+        </p>
+    </article>
+        {% if app.user and ( is_granted('ROLE_ADMIN') ) %}
+            <a href="{{ path('Dev', {'type': 'Dev'}) }}" style="background-color: darkslategrey;border-radius: 3px; padding: 6px;">-Nouveau-</a>
+        {% endif %}
+    
+    <div>
+        
+            {% for message in messages %}
+                <article class="msg msg-scd">
+                    <p class="titre">
+                        <span style="display: inline-block; min-width: 25%;">
+                            <a href="{{ path('user_show', {'id': message.auteur.id}) }}" class="nom">{{ message.auteur.nom }}</a>
+                            <span style="color: rgb(100, 100, 100);"> - Le {{ message.date|date("d/m/Y") }}</span>
+                        </span>
+                        <span class="pts">{{ message.titre }}</span>
+                    </p>
+                    <p class="contenu">{{ message.contenu }}</p>
+                    <p class="categories">
+                        {% for categorie in message.categories %}
+                            <span>{{ categorie }}</span>
+                        {% endfor %}
+                    </p>
+                    {# <p class="avis">
+                        <a href="#">
+                            <span class="pts">0 </span>
+                            <i class="fas fa-thumbs-up"></i>
+                        </a>
+                    </p> #} 
+        
+                </article>
+                {% if app.user and ( is_granted('ROLE_ADMIN') or (message.auteur.id == app.user.id)) %}
+                    <a href="{{ path('Dev_edit_msg', {'titre': message.titre , 'id': message.id }) }}" style="background-color: darkslategrey;border-radius: 3px; padding: 6px;">-Modifier-</a>
+                {% endif %}
+            {% else %}
+                <h4>Aucun message à ce jour.</h4>
+            {% endfor %}
+    </div>
+{% endblock %}
